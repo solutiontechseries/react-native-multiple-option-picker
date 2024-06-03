@@ -8,18 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solutiontechseries/react-native-multiple-selection.git"
+    "url": "git+https://github.com/solutiontechseries/react-native-multiple-option-picker.git"
   },
   "keywords": [
     "multiple-selection",
     "react-native",
-    "react-native-multiple-selection",
+    "react-native-multiple-option-picker",
     "option-picker"
   ],
   "author": "Pankaj Kumar Prajapati",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/solutiontechseries/react-native-multiple-selection/issues"
+    "url": "https://github.com/solutiontechseries/react-native-multiple-option-picker/issues"
   },
-  "homepage": "https://github.com/solutiontechseries/react-native-multiple-selection#readme"
+  "homepage": "https://github.com/solutiontechseries/react-native-multiple-option-picker#readme"
 }

@@ -21,6 +21,7 @@ export type ButtonProps = {
   title: string;
   type: 'done' | 'close';
   onPress: () => void;
+  pickerColor:ColorValue
 };
 export type SearchBarProps = {
   value: string;
@@ -33,5 +34,6 @@ export type CheckBoxProps = {
   title:string,
   onPress:()=>void,
   isChecked:boolean,
+  pickerColor:ColorValue
 
 }

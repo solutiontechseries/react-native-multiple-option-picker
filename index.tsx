@@ -28,6 +28,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
   extraTitleKey,
   onDone,
   onClose,
+  pickerColor,
 }) => {
   const [selectedData, setSelectedData] = useState<any>([]);
   const [searchData, setSearchData] = useState([]);
@@ -36,7 +37,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
   const listRef = React.useRef(null);
   useEffect(() => {
     if (value !== "" && show && type === "single") {
-      setSelectedData([value]);
+      setSelectedData(value);
       const index = data?.findIndex(
         (item) => item[rowUniqueKey] == value[rowUniqueKey]
       );
@@ -99,7 +100,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
       setSearchText(txt);
     };
     const onDonePress = () => {
-      onDone(selectedData.length === 1 ? selectedData[0] : selectedData);
+      onDone(selectedData);
       setSelectedData([]);
     };
 
@@ -134,6 +135,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
       }
     };
 
+    const showListData = searchText === "" ? data : searchData;
     return (
       <Modal
         visible={show}
@@ -144,7 +146,14 @@ const MultipleSelection: React.FC<PickerProps> = ({
         <SafeAreaView style={styles.safearea}>
           <View style={styles.container}>
             <View style={styles.innerContainer}>
-              <Text style={styles.pickerTitleText}>{pickerTitle}</Text>
+              <Text
+                style={[
+                  styles.pickerTitleText,
+                  pickerColor && { color: pickerColor },
+                ]}
+              >
+                {pickerTitle}
+              </Text>
               {enableSearch && (
                 <SearchBar
                   value={searchText}
@@ -155,11 +164,12 @@ const MultipleSelection: React.FC<PickerProps> = ({
               )}
               <View style={styles.devider} />
               <View>
-                {type === "multiple" && (
+                {type === "multiple" && showListData?.length > 0 && (
                   <CheckBox
                     onPress={onSelectAllPress}
                     isChecked={allSelected}
                     title={"Select All"}
+                    pickerColor={pickerColor}
                   />
                 )}
                 <View style={styles.devider} />
@@ -167,7 +177,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
               <View style={styles.listView}>
                 <FlatList
                   ref={listRef}
-                  data={searchText === "" ? data : searchData}
+                  data={showListData}
                   ListEmptyComponent={() => {
                     return (
                       <View style={styles.emptyView}>
@@ -184,6 +194,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
                         <CheckBox
                           onPress={() => onItemPress(item, active)}
                           isChecked={active}
+                          pickerColor={pickerColor}
                           title={`${item[rowTitleKey]}${
                             extraTitleSymbol && extraTitleSymbol
                           }${extraTitleKey && item[extraTitleKey]}`}
@@ -220,8 +231,21 @@ const MultipleSelection: React.FC<PickerProps> = ({
           <View style={styles.devider} />
 
           <View style={styles.buttonsRow}>
-            <Buttons title={"Close"} onPress={onClose} type={"close"} />
-            <Buttons title={"Done"} onPress={onDonePress} type={"done"} />
+            <Buttons
+              title={"Close"}
+              onPress={() => {
+                setSelectedData([]);
+                onClose();
+              }}
+              type={"close"}
+              pickerColor={pickerColor}
+            />
+            <Buttons
+              title={"Done"}
+              onPress={onDonePress}
+              type={"done"}
+              pickerColor={pickerColor}
+            />
           </View>
         </SafeAreaView>
         <SafeAreaView style={styles.bottomSafearea} />
@@ -294,7 +318,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   safearea: {
-    backgroundColor: COLORS.WHITE,
     flex: 1,
   },
   bottomSafearea: {

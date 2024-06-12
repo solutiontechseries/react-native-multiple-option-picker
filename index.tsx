@@ -100,10 +100,18 @@ const MultipleSelection: React.FC<PickerProps> = ({
       setSearchText(txt);
     };
     const onDonePress = () => {
-      onDone(selectedData);
-      setSelectedData([]);
+      if (selectedData?.length <= 0) {
+        onClosed();
+      } else {
+        onDone(selectedData);
+        setSelectedData([]);
+      }
     };
 
+    const onClosed = () => {
+      setSelectedData([]);
+      onClose();
+    };
     const onSelectAllPress = () => {
       if (!allSelected) {
         setSelectedData([...data]);
@@ -233,10 +241,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
           <View style={styles.buttonsRow}>
             <Buttons
               title={"Close"}
-              onPress={() => {
-                setSelectedData([]);
-                onClose();
-              }}
+              onPress={onClosed}
               type={"close"}
               pickerColor={pickerColor}
             />

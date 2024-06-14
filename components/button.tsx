@@ -1,7 +1,7 @@
-import React from "react";
-import { Text, TouchableOpacity, ViewStyle, TextStyle } from "react-native";
-import { COLORS } from "../utils/values";
-import { ButtonProps } from "../utils/props-type";
+import React from 'react';
+import {Text, TouchableOpacity, ViewStyle, TextStyle} from 'react-native';
+import {COLORS} from '../utils/values';
+import {ButtonProps} from '../utils/props-type';
 
 const Buttons: React.FC<ButtonProps> = ({
   onPress,
@@ -11,16 +11,16 @@ const Buttons: React.FC<ButtonProps> = ({
 }) => {
   const baseButton: ViewStyle = {
     height: 48,
-    width: 120,
+    width: 100,
     borderRadius: 6,
     borderWidth: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   };
 
   const baseTitle: TextStyle = {
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: '600',
   };
 
   const styles = {
@@ -57,8 +57,7 @@ const Buttons: React.FC<ButtonProps> = ({
     <TouchableOpacity
       activeOpacity={0.65}
       onPress={onPress}
-      style={[styles.baseButton, styles[type].button]}
-    >
+      style={[styles.baseButton, styles[type].button]}>
       <Text style={[styles.baseTitle, styles[type].title]}>{title}</Text>
     </TouchableOpacity>
   );

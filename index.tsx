@@ -155,7 +155,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
             <View style={styles.innerContainer}>
               <View style={styles.buttonsRow}>
                 <Buttons
-                  title={'Close'}
+                  title={'Cancel'}
                   onPress={onClosed}
                   type={'close'}
                   pickerColor={pickerColor}
@@ -183,21 +183,27 @@ const MultipleSelection: React.FC<PickerProps> = ({
                   onClear={() => setSearchText('')}
                 />
               )}
-              {/* <View style={styles.devider} /> */}
+
               <View>
                 {type === 'multiple' && showListData?.length > 0 && (
-                  <CheckBox
-                    onPress={onSelectAllPress}
-                    isChecked={allSelected}
-                    title={'Select All'}
-                    pickerColor={pickerColor}
-                  />
+                  <>
+                    <CheckBox
+                      onPress={onSelectAllPress}
+                      isChecked={allSelected}
+                      title={'Select All'}
+                      pickerColor={pickerColor}
+                    />
+
+                    <View style={styles.devider} />
+                  </>
                 )}
               </View>
               <View style={styles.listView}>
                 <FlatList
                   ref={listRef}
                   data={showListData}
+                  // style={{flex: 1}}
+                  contentContainerStyle={{paddingBottom: 100}}
                   ListEmptyComponent={() => {
                     return (
                       <View style={styles.emptyView}>
@@ -282,24 +288,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: COLORS.TITLE,
   },
-  rowTitleText: {
-    fontWeight: '400',
-    fontSize: 17,
-    color: COLORS.TITLE,
-    marginLeft: 15,
-  },
-  check: {
-    height: 22,
-    width: 22,
-  },
+
   listView: {marginBottom: 110},
-  rowView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 10,
-    marginVertical: 5,
-    paddingVertical: 15,
-  },
   devider: {
     height: 1,
     backgroundColor: COLORS.DEVIDER,

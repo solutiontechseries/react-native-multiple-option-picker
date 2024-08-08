@@ -9,11 +9,11 @@ export interface PickerProps {
   pickerTitle: string;
   value: string | Object | any[];
   data: any[];
-  pickerColor?: ColorValue;
+  pickerColor?: ColorValue | undefined;
   rowUniqueKey: string;
   rowTitleKey: string;
-  extraTitleSymbol?: string;
-  extraTitleKey?: string;
+  extraTitleSymbol?: string | '';
+  extraTitleKey?: string | '';
   onDone: (data: any) => void;
   onClose: () => void;
 }

@@ -99,6 +99,8 @@ const MultipleSelection: React.FC<PickerProps> = ({
     };
     const onDonePress = () => {
       if (selectedData?.length <= 0) {
+        setSelectedData([]);
+
         onClosed();
       } else {
         onDone(selectedData);

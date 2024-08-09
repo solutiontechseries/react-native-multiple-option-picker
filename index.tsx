@@ -83,13 +83,30 @@ const MultipleSelection: React.FC<PickerProps> = ({
     const onChangeText = (txt: string) => {
       setSearchData(
         data.filter((item) => {
+          const mainTitle = item[rowTitleKey]?.toString().toLowerCase() || "";
+          const extraTitle = extraTitleKey
+            ? item[extraTitleKey]?.toString().toLowerCase() || ""
+            : "";
+          const searchText = txt.toLowerCase();
+
+          return (
+            mainTitle.includes(searchText) || extraTitle.includes(searchText)
+          );
+
           if (extraTitleKey) {
             return (
-              item[rowTitleKey]?.toLowerCase()?.includes(txt?.toLowerCase()) ||
-              item[extraTitleKey]?.toLowerCase()?.includes(txt?.toLowerCase())
+              item[rowTitleKey]
+                ?.toString()
+                ?.toLowerCase()
+                ?.includes(txt?.toLowerCase()) ||
+              item[extraTitleKey]
+                ?.toString()
+                ?.toLowerCase()
+                ?.includes(txt?.toLowerCase())
             );
           } else {
             return item[rowTitleKey]
+              ?.toString()
               ?.toLowerCase()
               ?.includes(txt?.toLowerCase());
           }

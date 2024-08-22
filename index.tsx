@@ -17,6 +17,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
   show,
   type,
   enableSearch = true,
+  isCapsTitle = false,
   searchPlaceholder = "Search here",
   pickerTitle,
   emptyTitle = "No Record(s) Found",
@@ -240,6 +241,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
                           onPress={() => onItemPress(item, active)}
                           isChecked={active}
                           pickerColor={pickerColor}
+                          isCapsTitle={isCapsTitle}
                           title={`${item[rowTitleKey]}${
                             extraTitleSymbol && extraTitleSymbol
                           }${extraTitleKey && item[extraTitleKey]}`}

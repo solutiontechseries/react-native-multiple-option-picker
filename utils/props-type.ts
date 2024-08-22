@@ -6,6 +6,7 @@ export interface PickerProps {
   emptyTitle:string,
   enableSearch: boolean,
   searchPlaceholder: string,
+  isCapsTitle?:boolean,
   pickerTitle: string;
   value: string | Object | any[];
   data: any[];
@@ -35,5 +36,5 @@ export type CheckBoxProps = {
   onPress:()=>void,
   isChecked:boolean,
   pickerColor:ColorValue
-
+  isCapsTitle?:boolean,
 }

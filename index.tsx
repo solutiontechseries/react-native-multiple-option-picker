@@ -19,6 +19,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
   enableSearch = true,
   isCapsTitle = false,
   searchPlaceholder = "Search here",
+  searchPlaceholderTextColor,
   pickerTitle,
   emptyTitle = "No Record(s) Found",
   data,
@@ -199,6 +200,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
                 <SearchBar
                   value={searchText}
                   placeholder={searchPlaceholder}
+                  searchPlaceholderTextColor={searchPlaceholderTextColor}
                   onChangeText={onChangeText}
                   onClear={() => setSearchText("")}
                 />

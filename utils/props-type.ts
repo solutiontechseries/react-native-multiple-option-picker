@@ -6,6 +6,7 @@ export interface PickerProps {
   emptyTitle:string,
   enableSearch: boolean,
   searchPlaceholder: string,
+  searchPlaceholderTextColor?:ColorValue,
   isCapsTitle?:boolean,
   pickerTitle: string;
   value: string | Object | any[];
@@ -27,6 +28,7 @@ export type ButtonProps = {
 export type SearchBarProps = {
   value: string;
   placeholder: string;
+  searchPlaceholderTextColor?:ColorValue,
   onChangeText: (txt: string) => void;
   onClear: () => void;
 };

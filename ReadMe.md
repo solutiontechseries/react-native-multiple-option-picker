@@ -17,8 +17,8 @@ A customizable and reusable multiple selection modal component for React Native,
 ## Examples
 
 <p align="left">
-  <img width=220 title="MultipleSelection" src="https://github.com/solutiontechseries/react-native-multiple-option-picker/blob/main/examples/MmultipleSelection.png">
-  <img width=220 title="SingleSelection" src="https://github.com/solutiontechseries/react-native-multiple-option-picker/blob/main/examples/SigleSelectetion.png">
+  <img width=220 title="MultipleSelection" src="https://github.com/solutiontechseries/react-native-multiple-option-picker/blob/main/examples/MultipleSelection.png">
+  <img width=220 title="SingleSelection" src="https://github.com/solutiontechseries/react-native-multiple-option-picker/blob/main/examples/SingleSelection.png">
 </p>
 
 ## Installation

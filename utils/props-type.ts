@@ -14,8 +14,8 @@ export interface PickerProps {
   pickerColor?: ColorValue | undefined;
   rowUniqueKey: string;
   rowTitleKey: string;
-  extraTitleSymbol?: string | '';
-  extraTitleKey?: string | '';
+  extraTitleSymbol?: '' | string;
+  extraTitleKey?: '' | string;
   onDone: (data: any) => void;
   onClose: () => void;
 }

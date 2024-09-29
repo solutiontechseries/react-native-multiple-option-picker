@@ -1,7 +1,7 @@
 {
   "name": "react-native-multiple-option-picker",
-  "version": "1.1.5",
-  "description": "Introducing React Native Multiple Selection: effortlessly integrate single and multiple selection modes into your app's lists. Enjoy a customizable UI, smooth interactions, and comprehensive documentation. Upgrade your React Native app's user experience today!",
+  "version": "1.1.9",
+  "description": "React Native Multiple Option Picker allows seamless integration of both single and multiple selection modes within your app's lists. Featuring a customizable UI, search functionality, and smooth user interactions, this library simplifies selection processes while enhancing user experience. Easily configurable and well-documented to fit any React Native project.",
   "main": "index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,13 +11,19 @@
     "url": "git+https://github.com/solutiontechseries/react-native-multiple-option-picker.git"
   },
   "keywords": [
-    "multiple-selection",
     "react-native",
-    "react-native-multiple-option-picker",
+    "multiple-selection",
+    "single-selection",
     "option-picker",
+    "react-native-multiple-selection",
     "multiple-option-picker",
-    "single-option-selection",
-    "option-selection"
+    "picker-library",
+    "multi-select",
+    "dropdown-picker",
+    "react-native-list-picker",
+    "react-native-option-picker",
+    "selection-modal",
+    "searchable-picker"
   ],
   "author": "Pankaj Kumar Prajapati",
   "license": "MIT",

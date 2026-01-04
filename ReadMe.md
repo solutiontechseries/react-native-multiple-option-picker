@@ -2,7 +2,7 @@
 
 Introducing React Native Multiple Selection: effortlessly integrate single and multiple selection modes into your app's lists. Enjoy a customizable UI, smooth interactions, and comprehensive documentation. Upgrade your React Native app's user experience today!
 
-# MultipleSelection React Native Library
+# Multiple Selection React Native Library
 
 A customizable and reusable multiple selection modal component for React Native, allowing users to select items from a list, with search and checkbox options.
 

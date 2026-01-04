@@ -27,12 +27,14 @@ A customizable and reusable multiple selection modal component for React Native,
 
 ```bash
 npm i react-native-multiple-option-picker --save
+npm i react-native-safe-area-context --save
 ```
 
 or
 
 ```bash
 yarn add react-native-multiple-option-picker
+yarn add react-native-safe-area-context
 ```
 
 ## Step 2

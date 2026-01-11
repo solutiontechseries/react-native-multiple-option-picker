@@ -5,28 +5,23 @@
 # Node
 node_modules/
 
-# Dev & config files
+# IDE / Editor
 .vscode/
 .idea/
-.editorconfig
-tsconfig.json
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Tests / examples
+# Tests & examples
 example/
 __tests__/
-
-# Screenshots
-*.png
-*.jpg
-*.jpeg
-*.DS_Store
 
 # OS
 .DS_Store
 Thumbs.db
 
+# Dev only
+.editorconfig
+.env

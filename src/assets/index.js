@@ -5,6 +5,8 @@
  @ ℂ𝕣𝕖𝕒𝕥𝕖𝕕 𝕆𝕟: Sun Jan 04 2026
  */
 export const IMAGES = {
-  CLOSE: require("./close.png"),
-  SEARCH: require("./search.png"),
+  CLOSE: require("./img_close.png"),
+  SEARCH: require("./img_search.png"),
+  CHECK: require("./img_check.png"),
+  UNCHECK: require("./img_uncheck.png"),
 };

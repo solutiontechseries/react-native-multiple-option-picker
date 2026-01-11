@@ -1,21 +1,21 @@
 /*
  @ 𝔸𝕦𝕥𝕙𝕠𝕣: ℙ𝕒𝕟𝕜𝕒𝕛 𝕂𝕦𝕞𝕒𝕣 ℙ𝕣𝕒𝕛𝕒𝕡𝕒𝕥𝕚
- @ 𝔽𝕚𝕝𝕖 ℕ𝕒𝕞𝕖: index.tsx
+ @ 𝔽𝕚𝕝𝕖 ℕ𝕒𝕞𝕖: MultipleOptionPicker.tsx
  @ ℂ𝕠𝕡𝕪𝕣𝕚𝕘𝕙𝕥 (𝕔) 2026 𝕊𝕠𝕝𝕦𝕥𝕚𝕠𝕟𝕋𝕖𝕔𝕙𝕊𝕖𝕣𝕚𝕖𝕤
- @ ℂ𝕣𝕖𝕒𝕥𝕖𝕕 𝕆𝕟: Sun Jan 04 2026
+ @ ℂ𝕣𝕖𝕒𝕥𝕖𝕕 𝕆𝕟: Mon Jan 05 2026
  */
-import React from "react";
+import React, {memo} from 'react';
 import {
   Image,
   StyleSheet,
   TextInput,
   TouchableOpacity,
   View,
-} from "react-native";
+} from 'react-native';
 
-import { IMAGES } from "../assets";
-import { SearchBarProps } from "../utils/props-type";
-import { COLORS } from "../utils/values";
+import {IMAGES} from '../assets';
+import {SearchBarProps} from '../utils/props-type';
+import {COLORS} from '../utils/values';
 
 const SearchBar: React.FC<SearchBarProps> = ({
   value,
@@ -27,6 +27,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <View style={styles.inputOuterView}>
       <Image source={IMAGES.SEARCH} style={styles.searchIcon} />
+
       <TextInput
         value={value}
         onChangeText={onChangeText}
@@ -34,12 +35,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
         style={styles.inputView}
         placeholder={placeholder}
       />
-      {value !== "" && (
+
+      {value !== '' && (
         <TouchableOpacity
           activeOpacity={0.65}
           onPress={onClear}
-          style={styles.closeButtonView}
-        >
+          style={styles.closeButtonView}>
           <Image style={styles.closeIcon} source={IMAGES.CLOSE} />
         </TouchableOpacity>
       )}
@@ -47,14 +48,14 @@ const SearchBar: React.FC<SearchBarProps> = ({
   );
 };
 
-export default SearchBar;
+export default memo(SearchBar);
 
 const styles = StyleSheet.create({
   closeButtonView: {
     width: 35,
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   closeIcon: {
     height: 16,
@@ -69,19 +70,19 @@ const styles = StyleSheet.create({
   inputView: {
     flex: 1,
     fontSize: 16,
-    fontWeight: "500",
-    color: "#222222",
+    fontWeight: '500',
+    color: '#222222',
     paddingHorizontal: 15,
   },
   inputOuterView: {
     height: 48,
     borderWidth: 1,
-    borderRadius: 6,
+    borderRadius: 12,
     borderColor: COLORS.PLACEHOLDER,
     margin: 15,
     marginHorizontal: 10,
     paddingLeft: 10,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

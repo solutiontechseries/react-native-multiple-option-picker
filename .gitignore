@@ -22,3 +22,4 @@ Thumbs.db
 
 # Build (if added later)
 dist/
+*.tgz

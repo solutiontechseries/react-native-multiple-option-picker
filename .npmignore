@@ -15,7 +15,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Tests & examples
-example/
+examples/
 __tests__/
 
 # OS
@@ -25,3 +25,5 @@ Thumbs.db
 # Dev only
 .editorconfig
 .env
+src/
+tsconfig.json

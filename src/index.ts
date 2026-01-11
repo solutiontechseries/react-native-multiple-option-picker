@@ -5,7 +5,7 @@
  @ ℂ𝕣𝕖𝕒𝕥𝕖𝕕 𝕆𝕟: Mon Jan 05 2026
  */
 
-import MultipleSelection from "./src/components/MultipleOptionPicker";
+import MultipleSelection from "./components/MultipleOptionPicker";
 export default MultipleSelection;
 
 export type {
@@ -14,4 +14,4 @@ export type {
   SearchBarProps,
   CheckBoxProps,
   PickerItem,
-} from "./src/types";
+} from "./types";

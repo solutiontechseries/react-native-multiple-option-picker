@@ -65,7 +65,7 @@ export type SearchBarProps = {
 };
 
 export type CheckBoxProps = {
-  title: string;
+  title?: string;
   onPress: () => void;
   checkType?: 'radio' | 'checkbox';
   isChecked: boolean;

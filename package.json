@@ -1,21 +1,18 @@
 {
   "name": "react-native-multiple-option-picker",
-  "version": "1.4.3",
+  "version": "1.4.5",
   "description": "React Native Multiple Option Picker allows seamless integration of both single and multiple selection modes within your app's lists. Featuring a customizable UI, search functionality, and smooth user interactions, this library simplifies selection processes while enhancing user experience. Easily configurable and well-documented to fit any React Native project.",
-  "main": "./index.tsx",
-  "types": "./index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "src",
+    "dist",
     "README.md",
-    "LICENSE",
-    "index.ts"
+    "LICENSE"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "test": "echo \"No tests specified\"",
     "build": "tsc",
-    "dev": "tsc --watch"
+    "postbuild": "rm -rf dist/assets && cp -R src/assets dist/assets",
+    "prepublishOnly": "yarn build"
   },
   "repository": {
     "type": "git",
@@ -43,12 +40,16 @@
   },
   "homepage": "https://github.com/solutiontechseries/react-native-multiple-option-picker/tree/main",
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-native": ">=0.68.0",
+    "react": ">=17",
+    "react-native": ">=0.70",
     "react-native-safe-area-context": ">=4.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.2.7",
+    "react": "^18.2.0",
+    "react-native": "^0.83.1",
+    "react-native-safe-area-context": "^5.6.2",
+    "@types/react": "^18.2.45",
     "typescript": "^5.9.3"
-  }
+  },
+  "dependencies": {}
 }

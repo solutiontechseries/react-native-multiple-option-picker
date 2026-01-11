@@ -4,7 +4,7 @@
  @ ℂ𝕠𝕡𝕪𝕣𝕚𝕘𝕙𝕥 (𝕔) 2026 𝕊𝕠𝕝𝕦𝕥𝕚𝕠𝕟𝕋𝕖𝕔𝕙𝕊𝕖𝕣𝕚𝕖𝕤
  @ ℂ𝕣𝕖𝕒𝕥𝕖𝕕 𝕆𝕟: Mon Jan 05 2026
  */
-import React, {useMemo} from 'react';
+import React, { useMemo } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,10 +13,10 @@ import {
   ViewStyle,
   TextStyle,
   Image,
-} from 'react-native';
-import {CheckBoxProps} from '../types';
-import {COLORS} from '../utils/values';
-import {IMAGES} from '../assets';
+} from "react-native";
+import { CheckBoxProps } from "../types";
+import { COLORS } from "../utils/values";
+import { IMAGES } from "../assets/images";
 
 export const CheckBox: React.FC<CheckBoxProps> = ({
   title,
@@ -50,8 +50,9 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
     <TouchableOpacity
       activeOpacity={0.65}
       onPress={onPress}
-      style={styles.rowView}>
-      {checkType === 'radio' ? (
+      style={styles.rowView}
+    >
+      {checkType === "radio" ? (
         <View style={[styles.check, dynamicStyles.check]}>
           {isChecked && <View style={[styles.circle, dynamicStyles.circle]} />}
         </View>
@@ -60,7 +61,7 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
           source={isChecked ? IMAGES.CHECK : IMAGES.UNCHECK}
           style={[
             styles.checkImage,
-            isChecked && {tintColor: pickerColor ?? COLORS.PRIMARY},
+            isChecked && { tintColor: pickerColor ?? COLORS.PRIMARY },
           ]}
         />
       )}
@@ -74,7 +75,7 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
 
 const styles = StyleSheet.create({
   rowTitleText: {
-    fontWeight: '400',
+    fontWeight: "400",
     fontSize: 17,
     marginLeft: 15,
   },
@@ -87,8 +88,8 @@ const styles = StyleSheet.create({
     width: 25,
     borderWidth: 1,
     borderRadius: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   circle: {
     height: 13,
@@ -96,8 +97,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   rowView: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 15,

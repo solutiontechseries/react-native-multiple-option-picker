@@ -24,7 +24,7 @@ export interface PickerProps {
   enableSearch: boolean;
   searchPlaceholder: string;
   searchPlaceholderTextColor?: ColorValue;
-
+  isOneTapSelection?: boolean
   isCapsTitle?: boolean;
 
   /**

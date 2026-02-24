@@ -1,6 +1,6 @@
 {
   "name": "react-native-multiple-option-picker",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "description": "React Native Multiple Option Picker allows seamless integration of both single and multiple selection modes within your app's lists. Featuring a customizable UI, search functionality, and smooth user interactions, this library simplifies selection processes while enhancing user experience. Easily configurable and well-documented to fit any React Native project.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

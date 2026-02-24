@@ -2,51 +2,51 @@
  @ 𝔸𝕦𝕥𝕙𝕠𝕣: ℙ𝕒𝕟𝕜𝕒𝕛 𝕂𝕦𝕞𝕒𝕣 ℙ𝕣𝕒𝕛𝕒𝕡𝕒𝕥𝕚
  @ 𝔽𝕚𝕝𝕖 ℕ𝕒𝕞𝕖: MultipleOptionPicker.tsx
  @ ℂ𝕠𝕡𝕪𝕣𝕚𝕘𝕙𝕥 (𝕔) 2026 𝕊𝕠𝕝𝕦𝕥𝕚𝕠𝕟𝕋𝕖𝕔𝕙𝕊𝕖𝕣𝕚𝕖𝕤
- @ ℂ𝕣𝕖𝕒𝕥𝕖𝕕 𝕆𝕟: Mon Jan 05 2026
  */
 
-import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {FlatList, Modal, StyleSheet, Text, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import Buttons from './buttons';
-import {CheckBox} from './checkbox';
-import SearchBar from './search-bar';
-import {PickerProps} from '../types';
-import {COLORS} from '../utils/values';
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { FlatList, Modal, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Buttons from "./buttons";
+import { CheckBox } from "./checkbox";
+import SearchBar from "./search-bar";
+import { PickerProps } from "../types";
+import { COLORS } from "../utils/values";
 
 const MultipleSelection: React.FC<PickerProps> = ({
   show,
   type,
-  checkType = 'radio',
+  checkType = "radio",
   enableSearch = true,
   isCapsTitle = false,
-  searchPlaceholder = 'Search here',
+  searchPlaceholder = "Search here",
+  isOneTapSelection = false,
   searchPlaceholderTextColor,
   pickerTitle,
-  emptyTitle = 'No Record(s) Found',
+  emptyTitle = "No Record(s) Found",
   data,
   value,
   rowTitleKey,
   rowUniqueKey,
-  extraTitleSymbol = '',
-  extraTitleKey = '',
+  extraTitleSymbol = "",
+  extraTitleKey = "",
   onDone,
   onClose,
   pickerColor,
 }) => {
   const [selectedData, setSelectedData] = useState<any[] | any>([]);
   const [searchData, setSearchData] = useState<any[]>([]);
-  const [searchText, setSearchText] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>("");
   const [allSelected, setAllSelected] = useState<boolean>(false);
 
   const listRef = useRef<FlatList<any> | null>(null);
 
   useEffect(() => {
-    if (value !== '' && show && type === 'single') {
+    if (value !== "" && show && type === "single") {
       setSelectedData(value);
 
       const index = data?.findIndex(
-        item => item[rowUniqueKey] == value?.[rowUniqueKey],
+        (item) => item[rowUniqueKey] == value?.[rowUniqueKey],
       );
 
       if (index > -1) {
@@ -57,15 +57,15 @@ const MultipleSelection: React.FC<PickerProps> = ({
         });
       }
     } else if (
-      value !== '' &&
+      value !== "" &&
       show &&
-      type === 'multiple' &&
+      type === "multiple" &&
       value?.length > 0
     ) {
-      if (value !== '' && Array.isArray(value)) {
+      if (value !== "" && Array.isArray(value)) {
         setSelectedData(
-          data?.filter(e =>
-            value?.some(item => item[rowUniqueKey] === e[rowUniqueKey]),
+          data?.filter((e) =>
+            value?.some((item) => item[rowUniqueKey] === e[rowUniqueKey]),
           ) || [],
         );
       }
@@ -74,7 +74,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
     setAllSelected(selectedData?.length === data?.length);
 
     return () => {
-      setSearchText('');
+      setSearchText("");
       setSearchData([]);
     };
   }, [show, value]);
@@ -88,11 +88,11 @@ const MultipleSelection: React.FC<PickerProps> = ({
       const lowerText = txt.toLowerCase();
 
       setSearchData(
-        data.filter(item => {
-          const mainTitle = item[rowTitleKey]?.toString().toLowerCase() || '';
+        data.filter((item) => {
+          const mainTitle = item[rowTitleKey]?.toString().toLowerCase() || "";
           const extraTitle = extraTitleKey
-            ? item[extraTitleKey]?.toString().toLowerCase() || ''
-            : '';
+            ? item[extraTitleKey]?.toString().toLowerCase() || ""
+            : "";
 
           return (
             mainTitle.includes(lowerText) || extraTitle.includes(lowerText)
@@ -129,7 +129,12 @@ const MultipleSelection: React.FC<PickerProps> = ({
     };
 
     const onItemPress = (item: any, isAdded: boolean) => {
-      if (type === 'single') {
+      if (isOneTapSelection && type === "single") {
+        onDone([item]);
+        onClose?.();
+        return;
+      }
+      if (type === "single") {
         setSelectedData([item]);
         return;
       }
@@ -137,7 +142,9 @@ const MultipleSelection: React.FC<PickerProps> = ({
       let allData = [...selectedData];
 
       if (isAdded) {
-        allData = allData.filter(el => el[rowUniqueKey] !== item[rowUniqueKey]);
+        allData = allData.filter(
+          (el) => el[rowUniqueKey] !== item[rowUniqueKey],
+        );
       } else {
         allData.push(item);
       }
@@ -146,14 +153,15 @@ const MultipleSelection: React.FC<PickerProps> = ({
       setAllSelected(allData.length === data.length);
     };
 
-    const showListData = searchText === '' ? data : searchData;
+    const showListData = searchText === "" ? data : searchData;
 
     return (
       <Modal
         visible={show}
         animationType="slide"
         transparent
-        onRequestClose={onClose}>
+        onRequestClose={onClose}
+      >
         <SafeAreaView style={styles.safearea}>
           <View style={styles.container}>
             <View style={styles.innerContainer}>
@@ -167,8 +175,9 @@ const MultipleSelection: React.FC<PickerProps> = ({
                 <Text
                   style={[
                     styles.pickerTitleText,
-                    pickerColor && {color: pickerColor},
-                  ]}>
+                    pickerColor && { color: pickerColor },
+                  ]}
+                >
                   {pickerTitle}
                 </Text>
                 <Buttons
@@ -187,18 +196,18 @@ const MultipleSelection: React.FC<PickerProps> = ({
                   placeholder={searchPlaceholder}
                   searchPlaceholderTextColor={searchPlaceholderTextColor}
                   onChangeText={onChangeText}
-                  onClear={() => setSearchText('')}
+                  onClear={() => setSearchText("")}
                 />
               )}
 
-              {type === 'multiple' && showListData?.length > 0 && (
+              {type === "multiple" && showListData?.length > 0 && (
                 <>
                   <CheckBox
                     onPress={onSelectAllPress}
                     isChecked={allSelected}
                     title="Select All"
                     pickerColor={pickerColor}
-                    checkType={'radio'}
+                    checkType={"radio"}
                   />
                   <View style={styles.devider} />
                 </>
@@ -208,11 +217,11 @@ const MultipleSelection: React.FC<PickerProps> = ({
                 <FlatList
                   ref={listRef}
                   data={showListData}
-                  contentContainerStyle={{paddingBottom: 100}}
-                  keyExtractor={item => item[rowUniqueKey]}
-                  renderItem={({item}) => {
+                  contentContainerStyle={{ paddingBottom: 100 }}
+                  keyExtractor={(item) => item[rowUniqueKey]}
+                  renderItem={({ item }) => {
                     const active = selectedData?.some(
-                      e => e[rowUniqueKey] === item[rowUniqueKey],
+                      (e) => e[rowUniqueKey] === item[rowUniqueKey],
                     );
 
                     return (
@@ -224,7 +233,7 @@ const MultipleSelection: React.FC<PickerProps> = ({
                           pickerColor={pickerColor}
                           isCapsTitle={isCapsTitle}
                           title={`${item[rowTitleKey]}${extraTitleSymbol}${
-                            extraTitleKey ? item[extraTitleKey] : ''
+                            extraTitleKey ? item[extraTitleKey] : ""
                           }`}
                         />
                         <View style={styles.devider} />
@@ -240,8 +249,8 @@ const MultipleSelection: React.FC<PickerProps> = ({
                   viewabilityConfig={{
                     itemVisiblePercentThreshold: 50,
                   }}
-                  onScrollToIndexFailed={info => {
-                    if (type === 'single') {
+                  onScrollToIndexFailed={(info) => {
+                    if (type === "single") {
                       setTimeout(() => {
                         listRef.current?.scrollToIndex({
                           index: info.index,
@@ -281,37 +290,37 @@ const MultipleSelection: React.FC<PickerProps> = ({
 const styles = StyleSheet.create({
   emptyView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 110,
   },
   emptyTitleText: {
     fontSize: 20,
-    fontWeight: '500',
-    textAlign: 'center',
+    fontWeight: "500",
+    textAlign: "center",
     color: COLORS.TITLE,
   },
-  listView: {marginBottom: 110},
+  listView: { marginBottom: 110 },
   devider: {
     height: 1,
     backgroundColor: COLORS.DEVIDER,
     marginHorizontal: 10,
   },
   buttonsRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: COLORS.WHITE,
   },
   pickerTitleText: {
     fontSize: 17,
-    fontWeight: '600',
-    textAlign: 'center',
+    fontWeight: "600",
+    textAlign: "center",
     color: COLORS.PRIMARY,
     flex: 1,
   },
-  safearea: {flex: 1},
+  safearea: { flex: 1 },
   bottomSafearea: {
     backgroundColor: COLORS.WHITE,
     flex: 0,
@@ -319,14 +328,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.RGBA,
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
   innerContainer: {
     backgroundColor: COLORS.WHITE,
     paddingVertical: 15,
     paddingTop: 5,
     paddingHorizontal: 5,
-    maxHeight: '80%',
+    maxHeight: "80%",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },

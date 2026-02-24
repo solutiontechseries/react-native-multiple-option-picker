@@ -90,25 +90,26 @@ const App = () => {
 
 ## Props
 
-| Prop                         | Type                     | Default                | Description                                                           |
-| ---------------------------- | ------------------------ | ---------------------- | --------------------------------------------------------------------- |
-| `show`                       | `boolean`                | `false`                | Controls the visibility of the modal.                                 |
-| `type`                       | `'single' \| 'multiple'` | `'single'`             | Specifies the selection type, either `single` or `multiple`.          |
-| `emptyTitle`                 | `string`                 | `"No Record(s) Found"` | Message shown when no items are available in the list.                |
-| `enableSearch`               | `boolean`                | `true`                 | Enables or disables the search bar in the modal.                      |
-| `searchPlaceholder`          | `string`                 | `"Search here"`        | Placeholder text for the search input.                                |
-| `searchPlaceholderTextColor` | `ColorValue`             | `'#b1b1b1'`            | Custom color for the search placeholder text.                         |
-| `isCapsTitle`                | `boolean`                | `false`                | If `true`, the item titles are displayed in uppercase.                |
-| `pickerTitle`                | `string`                 | `""`                   | Title of the picker displayed at the top.                             |
-| `value`                      | `string  \| any[]`       | `""`                   | The current selected item(s), can be a empty string, or array.        |
-| `data`                       | `any[]`                  | `[]`                   | The list of items to display in the modal.                            |
-| `pickerColor`                | `ColorValue`             | `'#8902b3'`            | Custom color for the picker and text.                                 |
-| `rowUniqueKey`               | `string`                 | `""`                   | The unique key in your data for each item.                            |
-| `rowTitleKey`                | `string`                 | `""`                   | The key in your data that holds the title to be displayed.            |
-| `extraTitleSymbol`           | `string \| ''`           | `""`                   | A symbol to append after each title (optional).                       |
-| `extraTitleKey`              | `string \| ''`           | `""`                   | An additional key for showing extra text in the row title (optional). |
-| `onDone`                     | `(data: any) => void`    | `()`                   | Callback function when the user finishes selecting items.             |
-| `onClose`                    | `() => void`             | `()`                   | Callback function when the modal is closed.                           |
+| Prop                         | Type                     | Default                | Description                                                              |
+| ---------------------------- | ------------------------ | ---------------------- | ------------------------------------------------------------------------ |
+| `show`                       | `boolean`                | `false`                | Controls the visibility of the modal.                                    |
+| `type`                       | `'single' \| 'multiple'` | `'single'`             | Specifies the selection type, either `single` or `multiple`.             |
+| `isOneTapSelection`          | `boolean`                | `false`                | When set to `true` with type `signle` list modal auto hide in selection. |
+| `emptyTitle`                 | `string`                 | `"No Record(s) Found"` | Message shown when no items are available in the list.                   |
+| `enableSearch`               | `boolean`                | `true`                 | Enables or disables the search bar in the modal.                         |
+| `searchPlaceholder`          | `string`                 | `"Search here"`        | Placeholder text for the search input.                                   |
+| `searchPlaceholderTextColor` | `ColorValue`             | `'#b1b1b1'`            | Custom color for the search placeholder text.                            |
+| `isCapsTitle`                | `boolean`                | `false`                | If `true`, the item titles are displayed in uppercase.                   |
+| `pickerTitle`                | `string`                 | `""`                   | Title of the picker displayed at the top.                                |
+| `value`                      | `string  \| any[]`       | `""`                   | The current selected item(s), can be a empty string, or array.           |
+| `data`                       | `any[]`                  | `[]`                   | The list of items to display in the modal.                               |
+| `pickerColor`                | `ColorValue`             | `'#8902b3'`            | Custom color for the picker and text.                                    |
+| `rowUniqueKey`               | `string`                 | `""`                   | The unique key in your data for each item.                               |
+| `rowTitleKey`                | `string`                 | `""`                   | The key in your data that holds the title to be displayed.               |
+| `extraTitleSymbol`           | `string \| ''`           | `""`                   | A symbol to append after each title (optional).                          |
+| `extraTitleKey`              | `string \| ''`           | `""`                   | An additional key for showing extra text in the row title (optional).    |
+| `onDone`                     | `(data: any) => void`    | `()`                   | Callback function when the user finishes selecting items.                |
+| `onClose`                    | `() => void`             | `()`                   | Callback function when the modal is closed.                              |
 
 ## MIT License
 
